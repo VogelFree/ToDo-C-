@@ -40,9 +40,7 @@ namespace todo_console
         }
 
         private void RenderDeleteEntry(){
-            this.RenderAllEntries();
-            Console.WriteLine(
-                $"|############################################|");
+            this.RenderEntryTable();
             Console.Write("  Welcher Eintrag soll gelöscht werden?: ");
             var index = int.Parse(Console.ReadLine());
             if (index < this.Todos.Count) 
@@ -59,7 +57,21 @@ namespace todo_console
         }
 
         private void RenderEditEntry(){
-
+            this.RenderEntryTable();
+            Console.Write("  Welcher Eintrag soll geändert werden?: ");
+            var index = int.Parse(Console.ReadLine());
+            var item = this.Todos[index];
+            Console.Write(
+                $"alter Name: {item.Name} neuer Name: ");
+            var newName = Console.ReadLine();
+            Console.Write(
+                $"alte Prio: {item.Prio} neue Prio: ");
+            var newPrio = int.Parse(Console.ReadLine());
+            this.Todos.Remove(item);
+            this.Todos.Add(new TodoItem{
+                Name = newName,
+                Prio = newPrio,
+            });
         }
 
         private void RenderDeleteAllEntries() => this.Todos.RemoveAll(item => true);
@@ -81,11 +93,18 @@ namespace todo_console
 
         private void RenderAllEntries()
         {
+            this.RenderEntryTable();
+            Console.ReadLine();
+        }
+        
+        private void RenderEntryTable()
+        {
             this.RenderHeader();
             Console.WriteLine(
                 $"| Index | Name                        | Prio  |");
             this.Todos.ForEach(RenderEntry);
-            Console.ReadLine();
+            Console.WriteLine(
+                $"|#############################################|");
         }
 
         private void RenderSaveEntries(){
