@@ -19,7 +19,7 @@ namespace todo_console
                 case 4: this.RenderDeleteAllEntries(); break;
                 case 5: this.RenderSortEntries(); break;
                 case 6: this.RenderAllEntries(); break;
-                case 7: this.RenderSaveEntires(); break;
+                case 7: this.RenderSaveEntries(); break;
                 default: System.Environment.Exit(0); break;
             };
             Render();
@@ -78,7 +78,7 @@ namespace todo_console
             Console.ReadLine();
         }
 
-        private void RenderSaveEntires(){
+        private void RenderSaveEntries(){
 
         }
 
