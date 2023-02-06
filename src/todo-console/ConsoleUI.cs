@@ -40,7 +40,23 @@ namespace todo_console
         }
 
         private void RenderDeleteEntry(){
+            this.RenderAllEntries();
+            Console.WriteLine(
+                $"|############################################|");
+            Console.Write("  Welcher Eintrag soll gelöscht werden?: ");
+            var index = int.Parse(Console.ReadLine());
+            if (index < this.Todos.Count) 
+            {
+                var todoToDelete = this.Todos[index];
+                this.Todos.Remove(todoToDelete);
+                Console.Write($"Todo mit dem Namen '{todoToDelete.Name}' ist gelöscht!");
+            }
+            else
+            {
+                Console.Write($"Es gibt kein Todo mit der Nummer {index}");
+            }
 
+            Console.ReadLine();
         }
 
         private void RenderEditEntry(){
