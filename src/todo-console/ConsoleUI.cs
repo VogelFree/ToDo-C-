@@ -59,7 +59,7 @@ namespace todo_console
         {
             this.RenderHeader();
             Console.WriteLine(
-                $"| Name                        | Prio          |");
+                $"| Index | Name                        | Prio  |");
             this.Todos.ForEach(RenderEntry);
             Console.ReadLine();
         }
@@ -96,6 +96,6 @@ namespace todo_console
 
         private void RenderEntry(TodoItem item) =>
             Console.WriteLine(
-                $"| { item.Name }           | { item.Prio }     |");
+                $"|   {this.Todos.FindIndex(i => i.Equals(item))}   | { item.Name }           | { item.Prio } |");
     }
 }
