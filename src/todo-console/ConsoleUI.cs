@@ -47,9 +47,8 @@ namespace todo_console
             var index = int.Parse(Console.ReadLine());
             if (index < this.Todos.Count) 
             {
-                var todoToDelete = this.Todos[index];
-                this.Todos.Remove(todoToDelete);
-                Console.Write($"Todo mit dem Namen '{todoToDelete.Name}' ist gelöscht!");
+                this.Todos.RemoveAt(index);
+                Console.Write($"Todo an Position '{index}' ist gelöscht!");
             }
             else
             {
