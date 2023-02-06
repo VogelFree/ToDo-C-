@@ -63,9 +63,7 @@ namespace todo_console
 
         }
 
-        private void RenderDeleteAllEntries(){
-
-        }
+        private void RenderDeleteAllEntries() => this.Todos.RemoveAll(item => true);
 
         private void RenderSortEntries(){
 
