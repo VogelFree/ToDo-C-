@@ -65,7 +65,18 @@ namespace todo_console
         private void RenderDeleteAllEntries() => this.Todos.RemoveAll(item => true);
 
         private void RenderSortEntries(){
-
+            this.RenderHeader();
+            Console.Write(
+                $"  Nach was soll sortiert werden: {Environment.NewLine}" +
+                $"  (1) Name{Environment.NewLine}" +
+                $"  (2) Prio{Environment.NewLine}" +
+                $"Auswahl: ");
+            Comparison<TodoItem> comparer = int.Parse(Console.ReadLine()) switch
+            {
+                1 => (x, y) => x.Name.CompareTo(y.Name),
+                _ => (x, y) => x.Prio.CompareTo(y.Prio),
+            };
+            this.Todos.Sort(comparer);
         }
 
         private void RenderAllEntries()
