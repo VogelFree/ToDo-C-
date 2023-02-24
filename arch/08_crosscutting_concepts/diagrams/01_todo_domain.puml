@@ -1,0 +1,14 @@
+@startuml
+skinparam Handwritten true
+
+class TodoItem {
+    string Title
+    TodoStatus Status
+}
+
+class TodoStatus {
+    string value
+}
+
+TodoItem --> TodoStatus
+@enduml
